@@ -13,6 +13,9 @@ interface PostsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPost(postsItem: PostsItem)
 
+    @Query("SELECT * FROM posts WHERE title LIKE :query_")
+    fun getPostWithQuery(query_: String): Single<List<PostsItem>>
+
     @Query("SELECT * FROM posts")
     fun getPosts(): Single<List<PostsItem>>
 

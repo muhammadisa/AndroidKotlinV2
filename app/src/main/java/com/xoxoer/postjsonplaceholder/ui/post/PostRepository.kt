@@ -16,6 +16,20 @@ class PostRepository @Inject constructor(
         posts.forEach { post -> postsDao.insertPost(post) }
     }
 
+    fun retrievePostsWithQuery(
+        query: String,
+        onStart: () -> Unit,
+        onFinish: () -> Unit,
+        handler: ApiSingleObserver<List<PostsItem>>
+    ){
+        postsDao.getPostWithQuery(query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { onStart() }
+            .doOnTerminate { onFinish() }
+            .subscribe(handler)
+    }
+
     fun retrievePosts(
         onStart: () -> Unit,
         onFinish: () -> Unit,
