@@ -1,7 +1,5 @@
 package com.xoxoer.postjsonplaceholder.repository
 
-import androidx.lifecycle.MutableLiveData
-import com.nhaarman.mockitokotlin2.isNotNull
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import com.xoxoer.postjsonplaceholder.MockUtil
@@ -19,7 +17,10 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`
-import org.junit.*
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
