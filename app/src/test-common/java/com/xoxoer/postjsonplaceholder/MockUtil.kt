@@ -3,10 +3,12 @@ package com.xoxoer.postjsonplaceholder
 import com.xoxoer.postjsonplaceholder.model.PostsItem
 
 object MockUtil {
-    fun mockPost() = PostsItem(
-        1,
-        "This is body of post item",
-        "Title of this post item",
-        2
+    const val TITLE = "Title of this post item"
+    const val BODY = "This is body of post item"
+    fun mockPost(id: Int, userId:Int) = PostsItem(
+        id,
+        BODY,
+        TITLE,
+        userId
     )
 }
