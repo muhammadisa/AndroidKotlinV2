@@ -21,7 +21,7 @@ class PostRepository @Inject constructor(
         onStart: () -> Unit,
         onFinish: () -> Unit,
         handler: ApiSingleObserver<List<PostsItem>>
-    ){
+    ) {
         postsDao.getPostWithQuery(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -35,7 +35,7 @@ class PostRepository @Inject constructor(
         onFinish: () -> Unit,
         handler: ApiSingleObserver<List<PostsItem>>
     ) {
-        postsApi.retrievePosts()
+        return postsApi.retrievePosts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { onStart() }
